@@ -88,7 +88,7 @@ def generate_prime(bits=512):
     while True:
         # Generate a random odd number
         num = random.getrandbits(bits)
-        num |= (1 << bits - 1) | 1  # Set MSB and LSB to 1
+        num |= (1 << (bits - 1)) | 1  # Set MSB and LSB to 1 for clarity
         
         if is_prime(num):
             return num
@@ -116,10 +116,20 @@ def generate_keypair(bits=512):
     n = p * q
     phi = (p - 1) * (q - 1)
     
-    # Choose e (commonly 65537)
-    e = 65537
-    while gcd(e, phi) != 1:
-        e = random.randrange(2, phi)
+    # Choose e from standard secure values
+    # Common choices: 3, 17, 257, 65537 (Fermat primes)
+    candidates = [65537, 257, 17, 3]
+    e = None
+    for candidate in candidates:
+        if gcd(candidate, phi) == 1:
+            e = candidate
+            break
+    
+    # Fallback if none of the standard values work
+    if e is None:
+        e = 2
+        while gcd(e, phi) != 1:
+            e += 1
     
     # Calculate d (modular multiplicative inverse of e)
     d = mod_inverse(e, phi)

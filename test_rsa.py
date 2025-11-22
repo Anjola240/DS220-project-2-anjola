@@ -26,23 +26,23 @@ def test_mod_inverse():
 def test_is_prime():
     """Test primality checking."""
     # Known primes
-    assert rsa.is_prime(2) == True
-    assert rsa.is_prime(3) == True
-    assert rsa.is_prime(17) == True
-    assert rsa.is_prime(97) == True
+    assert rsa.is_prime(2)
+    assert rsa.is_prime(3)
+    assert rsa.is_prime(17)
+    assert rsa.is_prime(97)
     
     # Known composites
-    assert rsa.is_prime(1) == False
-    assert rsa.is_prime(4) == False
-    assert rsa.is_prime(15) == False
-    assert rsa.is_prime(100) == False
+    assert not rsa.is_prime(1)
+    assert not rsa.is_prime(4)
+    assert not rsa.is_prime(15)
+    assert not rsa.is_prime(100)
     print("✓ Primality tests passed")
 
 
 def test_generate_prime():
     """Test prime number generation."""
     prime = rsa.generate_prime(bits=64)
-    assert rsa.is_prime(prime) == True
+    assert rsa.is_prime(prime)
     assert prime.bit_length() >= 63  # Should be close to 64 bits
     print("✓ Prime generation tests passed")
 
