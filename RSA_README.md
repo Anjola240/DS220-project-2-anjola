@@ -6,6 +6,8 @@ This directory contains a Python implementation of the RSA (Rivest-Shamir-Adlema
 
 - **rsa.py**: Main RSA implementation module with key generation, encryption, and decryption functions
 - **test_rsa.py**: Comprehensive test suite for the RSA implementation
+- **rsa_example.py**: Demonstration script showing various use cases
+- **RSA_README.md**: This documentation file
 
 ## Features
 
@@ -15,8 +17,21 @@ This directory contains a Python implementation of the RSA (Rivest-Shamir-Adlema
 - Support for both string and integer encryption
 - Miller-Rabin primality testing for secure prime generation
 - Configurable key size
+- Secure exponent selection from Fermat primes
 
-## Usage
+## Quick Start
+
+Run the example script to see RSA in action:
+
+```bash
+python rsa_example.py
+```
+
+Run the test suite:
+
+```bash
+python test_rsa.py
+```
 
 ### Basic Example
 
@@ -49,19 +64,7 @@ decrypted_num = rsa.decrypt(private_key, encrypted_num)
 print(decrypted_num)  # Output: 42
 ```
 
-## Running the Demo
-
-```bash
-python rsa.py
-```
-
-## Running Tests
-
-```bash
-python test_rsa.py
-```
-
-## Functions
+## API Reference
 
 ### `generate_keypair(bits=512)`
 Generates a public and private key pair.
